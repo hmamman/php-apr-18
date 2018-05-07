@@ -1,5 +1,5 @@
 <?php
-// Script start
+/*// Script start
 $rustart = getrusage();
 error_reporting(-1);
 echo grader(65);
@@ -8,11 +8,10 @@ echo '<br>';
 
 $evens = evens(1038768);
 
-print number_format($evens, 2);
+print number_format($evens, 2);*/
 
-function grader($score) 
+function grader($score)
 {
-    $grade = '';
     if ($score >= 70) {
         $grade = 'A';
     } else if ($score >= 60) {
@@ -50,8 +49,8 @@ function rutime($ru, $rus, $index) {
      -  ($rus["ru_$index.tv_sec"]*1000 + intval($rus["ru_$index.tv_usec"]/1000));
 }
 
-$ru = getrusage();
+/*$ru = getrusage();
 echo "This process used " . rutime($ru, $rustart, "utime") .
     " ms for its computations\n";
 echo "It spent " . rutime($ru, $rustart, "stime") .
-    " ms in system calls\n";
+    " ms in system calls\n";*/
