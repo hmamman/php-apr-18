@@ -1,11 +1,5 @@
 <?php
-
-$link = mysqli_connect(
-    'localhost',
-    'root',
-    '',
-    'php_apr_18'
-) or die (mysqli_connect_error());
+include 'inc/connection.php';
 
 $sql = 'select * from student';
 
@@ -44,15 +38,39 @@ while ($row = mysqli_fetch_assoc($result)) {
     </style>
 </head>
 <body>
+<form action="InsertStudent.php" method="post">
+  <table>
+    <tr>
+      <td>Id: <input type="number" name="id"></td>
+    </tr>
+    <tr>
+      <td>
+        Name: <input type="text" name="name">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button type="submit">Save</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<hr>
+<br>
 <table>
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Action</th>
     </tr>
     <?php foreach ($data as $student):?>
     <tr>
         <td><?=$student['id']?></td>
         <td><?=$student['name']?></td>
+        <td>
+          <a href="EditStudent.php?id=<?=$student['id']?>">Edit</a> |
+          <a href="DeleteStudent.php?id=<?=$student['id']?>">Delete</a>
+        </td>
     </tr>
     <?php endforeach;?>
 </table>
