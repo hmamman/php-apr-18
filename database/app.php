@@ -1,16 +1,7 @@
 <?php
-include 'inc/connection.php';
-
-$sql = 'select * from student';
-
-$result= mysqli_query($link, $sql) or die (mysqli_error($link));
-
-$data= [];
-
-while ($row = mysqli_fetch_assoc($result)) {
-    $data[] = $row;
-}
-
+include 'Student.php';
+$student = new Student();
+$data = $student->getStudents();
 ?>
 
 <!doctype html>

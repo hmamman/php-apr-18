@@ -1,14 +1,21 @@
 <?php
-include 'inc/connection.php';
+include 'Student.php';
+
+$student = new Student();
+
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    $sql = sprintf('select * from student where id=%s', escape($id));
-
-    $result = mysqli_query($link, $sql);
-    $data = mysqli_fetch_assoc($result);
+    $data = $student->getStudent($id);
 }
 
+if ($_POST) {
+  $result = $student->updateStudent();
+
+  if ($result) {
+      header("Location: app.php");
+  }
+}
 ?>
 
 <!doctype html>
@@ -21,7 +28,7 @@ if (isset($_GET['id'])) {
     <title>Document</title>
 </head>
 <body>
-<form action="" method="post">
+<form action="<?=$_SERVER['PHP_SELF'];?>" method="post">
     <table>
         <tr>
             <td>Id: <?=$data['id'];?></td>
