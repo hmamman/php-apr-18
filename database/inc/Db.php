@@ -11,6 +11,9 @@ class Db {
             'php_apr_18'
         ) or die (mysqli_connect_error());
 
+        if (!session_start()) {
+            session_start();
+        }
     }
 
     protected function escape($data)

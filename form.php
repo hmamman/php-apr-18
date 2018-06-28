@@ -1,3 +1,6 @@
+<?php
+include_once 'database/inc/checkSession.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
